@@ -1,5 +1,4 @@
 import MarvelService
-import MarvelServiceMock
 import SwiftUI
 
 public struct CharacterDetailsView: View {
@@ -69,11 +68,14 @@ public struct CharacterDetailsView: View {
     }
 }
 
+import MarvelServiceMock
+
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
         CharacterDetailsView(
             characterID: 10,
-            marvelService: MarvelServiceMock.dev
+            //marvelService: MarvelServiceMock.dev // Hulk
+            marvelService: MarvelServiceMock() // Loading skeleton
         )
     }
 }

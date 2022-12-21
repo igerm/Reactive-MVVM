@@ -39,10 +39,9 @@ final public class CharacterDetailsViewModel: ObservableObject {
             .character(id: characterID, refreshData: true)
             .receive(on: OperationQueue.main)
             .trackLoading(to: &$isLoading)
-            .handleEvents(receiveCompletion: { completion in
-                guard case .failure = completion else { return }
-                // TODO: handle error
-            })
+            .onError { _ in
+                // TODO: handle error. Show?
+            }
             .map { $0 as Character? }
             .replaceError(with: nil as Character?)
             .assign(to: &$character)

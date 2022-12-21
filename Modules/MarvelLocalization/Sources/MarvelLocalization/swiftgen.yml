@@ -4,4 +4,5 @@ strings:
     templateName: structured-swift5
     output: Strings.swift
     params:
+      # enumName: Strings
       publicAccess: true
