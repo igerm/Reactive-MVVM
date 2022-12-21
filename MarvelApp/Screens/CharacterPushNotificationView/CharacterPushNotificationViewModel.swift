@@ -1,22 +1,13 @@
-//
-//  CharacterPushNotificationViewModel.swift
-//  MarvelApp
-//
-//  Created by German Azcona on 12/20/22.
-//
-
+import Combine
 import Foundation
+import MarvelService
 
 final public class CharacterPushNotificationViewModel: ObservableObject {
 
     @Published var avatarURL: URL?
     @Published var title: String = ""
-    @Published var lastUpdated: String = ""
     @Published var description: String = ""
-    @Published var isFavorite: Bool = false
     @Published var isLoading: Bool = false
-    @Published var eventsTitle: String = ""
-    @Published var eventsDescription: String = ""
 
     public let characterID: Int64
 
@@ -55,34 +46,10 @@ final public class CharacterPushNotificationViewModel: ObservableObject {
             .map { $0?.thumbnail.url }
             .assign(to: &$avatarURL)
         $character
-            .compactMap { $0?.modified }
-            .map { date in
-                let formatter = DateFormatter()
-                formatter.timeStyle = .none
-                formatter.dateStyle = .medium
-                formatter.doesRelativeDateFormatting = true
-                return L10n.CharacterDetails.DateLabel.lastModified(formatter.string(from: date))
-            }
-            .assign(to: &$lastUpdated)
-        $character
             .compactMap { $0?.name }
             .assign(to: &$title)
         $character
             .compactMap { $0?.characterDescription }
             .assign(to: &$description)
-        $character
-            .compactMap { $0?.events }
-            .map { L10n.CharacterDetails.EventsLabel.count($0.items.count) }
-            .assign(to: &$eventsTitle)
-        $character
-            .compactMap { $0?.events }
-            .map { events in
-                let eventNames = events.items.map { $0.name }
-                return ListFormatter.localizedString(byJoining: eventNames)
-            }
-            .assign(to: &$eventsDescription)
-        $character
-            .compactMap { $0?.isFavorite }
-            .assign(to: &$isFavorite)
     }
 }

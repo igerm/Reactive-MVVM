@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct CharacterPushNotificationView: View {
+
+    @ObservedObject var viewModel: CharacterPushNotificationViewModel
+
     var body: some View {
         HStack {
             AsyncImage(
@@ -27,15 +30,20 @@ struct CharacterPushNotificationView: View {
             VStack(alignment: .leading) {
                 Text(viewModel.isLoading ? "Loading loading loading" : viewModel.title)
                     .font(.title)
-                Text(viewModel.isLoading ? "Last updated: Jan 1, 2000 at 00:00 PM" : viewModel.lastUpdated)
+                Text(viewModel.isLoading ? "Last updated: Jan 1, 2000 at 00:00 PM" : viewModel.description)
                     .font(.callout)
             }
         }
+        .padding()
     }
 }
 
+import MarvelServiceMock
+
 struct PushNotificationView_Previews: PreviewProvider {
     static var previews: some View {
-        PushNotificationView()
+        CharacterPushNotificationView(
+            viewModel: .init(characterID: 10, marvelService: MarvelServiceMock.dev)
+        )
     }
 }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		DE171DDB295252A9007221B6 /* CharacterPushNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE171DDA295252A9007221B6 /* CharacterPushNotificationView.swift */; };
 		DE171DDE29525343007221B6 /* CharacterPushNotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE171DDD29525343007221B6 /* CharacterPushNotificationViewModel.swift */; };
+		DE171DE129534140007221B6 /* Ably in Frameworks */ = {isa = PBXBuildFile; productRef = DE171DE029534140007221B6 /* Ably */; };
 		DE23C2582949407C00FC1941 /* CharacterRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE23C2572949407C00FC1941 /* CharacterRow.swift */; };
 		DE23C25A294940B400FC1941 /* CharactersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE23C259294940B400FC1941 /* CharactersViewModel.swift */; };
 		DE23C25D294A69B400FC1941 /* CharacterRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE23C25C294A69B400FC1941 /* CharacterRowViewModel.swift */; };
@@ -122,6 +123,7 @@
 				DE7CFA10294BBAF900CB6FAD /* APIService in Frameworks */,
 				DE7CFA16294BBB2A00CB6FAD /* MarvelServiceMock in Frameworks */,
 				DE92A23329510B5A006F99C3 /* SwiftUIFlow in Frameworks */,
+				DE171DE129534140007221B6 /* Ably in Frameworks */,
 				DEC46014294D414900F25A92 /* CharacterDetailsView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -336,6 +338,7 @@
 				DEC46013294D414900F25A92 /* CharacterDetailsView */,
 				DE92A23229510B5A006F99C3 /* SwiftUIFlow */,
 				DE92A24829522E1F006F99C3 /* APIServiceMock */,
+				DE171DE029534140007221B6 /* Ably */,
 			);
 			productName = MarvelApp;
 			productReference = DE9559BC294770B100E7C288 /* MarvelApp.app */;
@@ -413,6 +416,7 @@
 				DE6E87BA294936ED00ADFAD8 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				DE23C26C294B979A00FC1941 /* XCRemoteSwiftPackageReference "Swinject" */,
 				DE92A23129510B5A006F99C3 /* XCRemoteSwiftPackageReference "SwiftUIFlow" */,
+				DE171DDF29534140007221B6 /* XCRemoteSwiftPackageReference "ably-cocoa" */,
 			);
 			productRefGroup = DE9559BD294770B100E7C288 /* Products */;
 			projectDirPath = "";
@@ -848,6 +852,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		DE171DDF29534140007221B6 /* XCRemoteSwiftPackageReference "ably-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ably/ably-cocoa";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		DE23C26C294B979A00FC1941 /* XCRemoteSwiftPackageReference "Swinject" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Swinject/Swinject";
@@ -875,6 +887,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		DE171DE029534140007221B6 /* Ably */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DE171DDF29534140007221B6 /* XCRemoteSwiftPackageReference "ably-cocoa" */;
+			productName = Ably;
+		};
 		DE23C26D294B979A00FC1941 /* Swinject */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = DE23C26C294B979A00FC1941 /* XCRemoteSwiftPackageReference "Swinject" */;
