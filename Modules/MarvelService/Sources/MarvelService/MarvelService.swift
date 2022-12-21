@@ -10,6 +10,9 @@ public protocol MarvelService: AnyObject {
     /// - return: A publisher that will issue Characters updates as the character is updated.
     func character(id: Int64, refreshData: Bool) -> AnyPublisher<Character, Error>
 
+    /// Searches for characters
+    /// - parameter name: tha name the character should have. Send nil to not filter by name.
+    /// - return: A publisher that will issue an array of Characters from the backend.
     func searchCharacters(name: String?) -> Future<[Character], Error>
 
     /// Observes favorite characters.
@@ -22,5 +25,8 @@ public protocol MarvelService: AnyObject {
     /// - return: A publisher with an error if any.
     func makeCharacter(id: Int64, favorite: Bool) -> Future<(), Error>
 
+    /// Retrieves a list of events by name.
+    /// - parameter name: tha name the event should have. Send nil to not filter by name.
+    /// - return: A publisher that will issue an array of Events from the backend.
     func events(named: String?) -> Future<[Event], Error>
 }

@@ -41,9 +41,7 @@ final public class MarvelServiceLive: MarvelService {
     public func character(id: Int64, refreshData: Bool) -> AnyPublisher<Character, Error> {
 
         let predicate = NSPredicate(format: "id == %d", id)
-        let sortDescriptors = [
-            NSSortDescriptor(key: "name", ascending: false)
-        ]
+        let sortDescriptors = [NSSortDescriptor(key: "name", ascending: false)]
 
         let localPublisher = coreDataService
                 .observe(
@@ -58,15 +56,16 @@ final public class MarvelServiceLive: MarvelService {
                 }
                 .compactMap { $0.first }
 
-        let cachedCharacter = (
+        let hasNoCachedCharacter = (
             try? coreDataService.fetch(
                 type: CharacterMO.self,
                 predicate: predicate,
                 sortDescriptors: sortDescriptors
             )
-        )?.count ?? 0
+        )?.isEmpty ?? true
 
-        guard refreshData || cachedCharacter == 0 else { return localPublisher.eraseToAnyPublisher() }
+        // if there is no cached character we need to fetch the data from the backend
+        guard refreshData || hasNoCachedCharacter else { return localPublisher.eraseToAnyPublisher() }
 
         let remotePublisher = apiService
             .dataPublisher(
@@ -78,7 +77,11 @@ final public class MarvelServiceLive: MarvelService {
             .compactMap { _ -> Character? in nil }
         //  ^ ignore this data from now on and change the signature to match the local publisher
 
-        return localPublisher.merge(with: remotePublisher)
+        return Publishers
+            .Merge(
+                localPublisher,
+                remotePublisher
+            )
             .eraseToAnyPublisher()
     }
 
