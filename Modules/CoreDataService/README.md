@@ -1,0 +1,3 @@
+# CoreDataService
+
+Common CoreData operations

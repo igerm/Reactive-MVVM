@@ -1,0 +1,41 @@
+{
+  "pins" : [
+    {
+      "identity" : "kingfisher",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/onevcat/Kingfisher.git",
+      "state" : {
+        "revision" : "44e891bdb61426a95e31492a67c7c0dfad1f87c5",
+        "version" : "7.4.1"
+      }
+    },
+    {
+      "identity" : "swiftgenplugin",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SwiftGen/SwiftGenPlugin",
+      "state" : {
+        "revision" : "879b85a470cacd70c19e22eb7e11a3aed66f4068",
+        "version" : "6.6.2"
+      }
+    },
+    {
+      "identity" : "swiftuiflow",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ciaranrobrien/SwiftUIFlow",
+      "state" : {
+        "branch" : "main",
+        "revision" : "b300d3c0110116f3520066dfb8dcf3006cf593c3"
+      }
+    },
+    {
+      "identity" : "swinject",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Swinject/Swinject",
+      "state" : {
+        "branch" : "master",
+        "revision" : "dfb78563c581eea560ea90c19dbe8d1d93d11260"
+      }
+    }
+  ],
+  "version" : 2
+}

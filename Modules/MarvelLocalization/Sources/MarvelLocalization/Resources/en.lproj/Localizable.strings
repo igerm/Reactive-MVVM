@@ -1,0 +1,18 @@
+
+"characters.title" = "Characters";
+"characters.filter.name" = "Name";
+"characters.filter.recents" = "Recents";
+"characters.cell.date_label.lastModified" = "Last modified: %@";
+
+"character_details.events_label.count" = "Events (%@)";
+"character_details.date_label.lastModified" = "Last updated: %@";
+
+"events.title" = "Events";
+"events.search.placeholder" = "Filter Events";
+"events.search.no_results" = "No results found";
+
+"favorites.title" = "Favorites";
+
+"generic.error_alert.title" = "Oops!";
+"generic.error_alert.message" = "An error has ocurred. Please try again later.";
+"generic.error_alert.dismissButton.title" = "Ok";

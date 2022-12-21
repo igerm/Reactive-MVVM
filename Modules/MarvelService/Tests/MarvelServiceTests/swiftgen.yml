@@ -1,0 +1,5 @@
+files:
+    inputs: Files
+    outputs:
+        templateName: structured-swift5
+        output: Files.swift
